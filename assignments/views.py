@@ -48,8 +48,9 @@ def post_assignment(request):
             posted_by=posted_by
         )
         asg.save()
-        return HttpResponse('Assignment posted successfully')
-    
+        return redirect('assigments_display',subject)
+        return HttpResponse('<h1 style="color:green">Assignment posted successfully<h1>')
+
     # If it's a GET request, render the form
     return render(request, 'post_assignment.html')
 
@@ -57,8 +58,8 @@ def admin_dashboard(request):
     return render(request, 'admin_dashboard.html')
 
 
-def post_assignment(request):
-    return render(request, 'post_assignment.html')
+# def post_assignment(request):
+#     return render(request, 'post_assignment.html')
 
 def assigments_display(request, course_name):
     assignments = Assigments.objects.filter(subject=course_name)
