@@ -27,5 +27,6 @@ urlpatterns = [
     path('login/', views.login,name='login'),
     path('admin_dashboard/', views.admin_dashboard,name='admin_dashboard'),
     path('<str:course_name>/', views.assigments_display,name='assigments_display'),
+    path("post_assignment/", views.post_assignment, name="post_assignment"),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

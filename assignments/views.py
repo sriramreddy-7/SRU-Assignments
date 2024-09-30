@@ -57,6 +57,9 @@ def admin_dashboard(request):
     return render(request, 'admin_dashboard.html')
 
 
+def post_assignment(request):
+    return render(request, 'post_assignment.html')
+
 def assigments_display(request, course_name):
     assignments = Assigments.objects.filter(subject=course_name)
     return render(request, 'assignments_display.html', {'assignments': assignments})
