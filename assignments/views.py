@@ -64,3 +64,25 @@ def admin_dashboard(request):
 def assigments_display(request, course_name):
     assignments = Assigments.objects.filter(subject=course_name)
     return render(request, 'assignments_display.html', {'assignments': assignments})
+
+def faculty(request):
+    assignments = Assigments.objects.all()
+    print("asssing",assignments)
+    return render(request, 'faculty.html', {'assignments': assignments})
+
+
+def delete_assignment(request, assignment_id):
+    assignment = Assigments.objects.get(id=assignment_id)
+    assignment.delete()
+    return redirect('index')
+
+def update_assignment(request, assignment_id):
+    assignment = Assigments.objects.get(id=assignment_id)
+    if request.method == 'POST':
+        assignment.title = request.POST.get('title')
+        assignment.description = request.POST.get('description')
+        assignment.subject = request.POST.get('subject')
+        assignment.assignment_file = request.FILES['assignment_file']
+        assignment.save()
+        return redirect('index')
+    return render(request, 'update_assignment.html', {'assignment': assignment})

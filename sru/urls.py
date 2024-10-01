@@ -28,5 +28,8 @@ urlpatterns = [
     path('admin_dashboard/', views.admin_dashboard,name='admin_dashboard'),
     path('<str:course_name>/', views.assigments_display,name='assigments_display'),
     path("post_assignment/", views.post_assignment, name="post_assignment"),
+    path('faculty/', views.faculty, name='faculty'),
+    path('update_assignment/<int:id>/', views.update_assignment, name='update_assignment'),
+    path('delete_assignment/<int:id>/', views.delete_assignment, name='delete_assignment'),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
